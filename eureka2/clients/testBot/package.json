@@ -1,0 +1,25 @@
+{
+  "name": "random-image-generator-twitterbot",
+  "version": "0.0.1",
+  "description": "Tweet a random image using node-canvas.",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "dotenv": "^6.2.0",
+    "fs": "0.0.1-security",
+    "mastodon": "^1.2.2"
+  },
+  "engines": {
+    "node": "8.x"
+  },
+  "repository": {
+    "url": ""
+  },
+  "keywords": [
+    "node",
+    "mastodon"
+  ]
+}
