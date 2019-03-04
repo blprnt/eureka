@@ -1,0 +1,49 @@
+2019-02-28 11:45:15.397 EST [8778] LOG:  could not bind IPv6 address "::1": Address already in use
+2019-02-28 11:45:15.397 EST [8778] HINT:  Is another postmaster already running on port 5432? If not, wait a few seconds and retry.
+2019-02-28 11:45:15.398 EST [8778] LOG:  could not bind IPv6 address "fe80::1%lo0": Address already in use
+2019-02-28 11:45:15.398 EST [8778] HINT:  Is another postmaster already running on port 5432? If not, wait a few seconds and retry.
+2019-02-28 11:45:15.398 EST [8778] LOG:  could not bind IPv4 address "127.0.0.1": Address already in use
+2019-02-28 11:45:15.398 EST [8778] HINT:  Is another postmaster already running on port 5432? If not, wait a few seconds and retry.
+2019-02-28 11:45:15.398 EST [8778] WARNING:  could not create listen socket for "localhost"
+2019-02-28 11:45:15.398 EST [8778] FATAL:  could not create any TCP/IP sockets
+2019-02-28 11:45:15.398 EST [8778] LOG:  database system is shut down
+2019-02-28 11:45:30.249 EST [8788] LOG:  listening on IPv6 address "::1", port 5432
+2019-02-28 11:45:30.249 EST [8788] LOG:  listening on IPv6 address "fe80::1%lo0", port 5432
+2019-02-28 11:45:30.249 EST [8788] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2019-02-28 11:45:30.250 EST [8788] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2019-02-28 11:45:30.262 EST [8789] LOG:  database system was shut down at 2019-02-28 11:45:08 EST
+2019-02-28 11:45:30.265 EST [8788] LOG:  database system is ready to accept connections
+2019-02-28 13:50:39.286 EST [36289] ERROR:  database "mastodon_development" already exists
+2019-02-28 13:50:39.286 EST [36289] STATEMENT:  CREATE DATABASE "mastodon_development" ENCODING = 'unicode'
+2019-02-28 13:50:39.298 EST [36290] ERROR:  database "mastodon_test" already exists
+2019-02-28 13:50:39.298 EST [36290] STATEMENT:  CREATE DATABASE "mastodon_test" ENCODING = 'unicode'
+2019-02-28 13:52:23.720 EST [36334] ERROR:  database "mastodon_development" already exists
+2019-02-28 13:52:23.720 EST [36334] STATEMENT:  CREATE DATABASE "mastodon_development" ENCODING = 'unicode'
+2019-02-28 13:52:23.731 EST [36335] ERROR:  database "mastodon_test" already exists
+2019-02-28 13:52:23.731 EST [36335] STATEMENT:  CREATE DATABASE "mastodon_test" ENCODING = 'unicode'
+2019-02-28 13:54:14.052 EST [36384] ERROR:  database "mastodon_development" already exists
+2019-02-28 13:54:14.052 EST [36384] STATEMENT:  CREATE DATABASE "mastodon_development" ENCODING = 'unicode'
+2019-02-28 13:54:14.063 EST [36385] ERROR:  database "mastodon_test" already exists
+2019-02-28 13:54:14.063 EST [36385] STATEMENT:  CREATE DATABASE "mastodon_test" ENCODING = 'unicode'
+2019-02-28 13:59:19.016 EST [36497] ERROR:  database "mastodon_development" already exists
+2019-02-28 13:59:19.016 EST [36497] STATEMENT:  CREATE DATABASE "mastodon_development" ENCODING = 'unicode'
+2019-02-28 13:59:19.027 EST [36498] ERROR:  database "mastodon_test" already exists
+2019-02-28 13:59:19.027 EST [36498] STATEMENT:  CREATE DATABASE "mastodon_test" ENCODING = 'unicode'
+2019-02-28 14:54:51.193 EST [38557] ERROR:  database "mastodon_development" already exists
+2019-02-28 14:54:51.193 EST [38557] STATEMENT:  CREATE DATABASE "mastodon_development" ENCODING = 'unicode'
+2019-02-28 14:54:51.205 EST [38558] ERROR:  database "mastodon_test" already exists
+2019-02-28 14:54:51.205 EST [38558] STATEMENT:  CREATE DATABASE "mastodon_test" ENCODING = 'unicode'
+2019-02-28 14:55:47.915 EST [38584] ERROR:  database "mastodon_development" already exists
+2019-02-28 14:55:47.915 EST [38584] STATEMENT:  CREATE DATABASE "mastodon_development" ENCODING = 'unicode'
+2019-02-28 14:55:47.926 EST [38585] ERROR:  database "mastodon_test" already exists
+2019-02-28 14:55:47.926 EST [38585] STATEMENT:  CREATE DATABASE "mastodon_test" ENCODING = 'unicode'
+2019-03-01 10:52:52.291 EST [60537] ERROR:  relation "pg_stat_statements" does not exist at character 15
+2019-03-01 10:52:52.291 EST [60537] STATEMENT:  SELECT * FROM pg_stat_statements LIMIT 1
+2019-03-03 10:50:08.036 EST [84611] ERROR:  database "mastodon_development" already exists
+2019-03-03 10:50:08.036 EST [84611] STATEMENT:  CREATE DATABASE "mastodon_development" ENCODING = 'unicode'
+2019-03-03 10:50:08.050 EST [84612] ERROR:  database "mastodon_test" already exists
+2019-03-03 10:50:08.050 EST [84612] STATEMENT:  CREATE DATABASE "mastodon_test" ENCODING = 'unicode'
+2019-03-03 10:50:31.485 EST [84632] ERROR:  database "mastodon_development" already exists
+2019-03-03 10:50:31.485 EST [84632] STATEMENT:  CREATE DATABASE "mastodon_development" ENCODING = 'unicode'
+2019-03-03 10:50:31.496 EST [84633] ERROR:  database "mastodon_test" already exists
+2019-03-03 10:50:31.496 EST [84633] STATEMENT:  CREATE DATABASE "mastodon_test" ENCODING = 'unicode'
