@@ -194,6 +194,7 @@ class ComposeForm extends ImmutablePureComponent {
       publishText = <span className='compose-form__publish-private'><i className='fa fa-lock' /> {intl.formatMessage(messages.publish)}</span>;
     } else {
       publishText = this.props.privacy !== 'unlisted' ? intl.formatMessage(messages.publishLoud, { publish: intl.formatMessage(messages.publish) }) : intl.formatMessage(messages.publish);
+      //publishText = "EUREKA!";
     }
 
     return (
@@ -233,7 +234,7 @@ class ComposeForm extends ImmutablePureComponent {
         <div className ='compose-form-loc'>
           <AutosuggestTextareaLOC
             ref={this.setAutosuggestTextareaLOC}
-            placeholder={"Library of Congress URL or unique ID"}
+            placeholder={"Library of Congress URL or Control Number"}
             disabled={disabled}
             value={this.props.locID}
             onChange={this.handleChangeLOC}

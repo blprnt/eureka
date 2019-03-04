@@ -59,8 +59,8 @@ en:
     pin_errors:
       following: You must be already following the person you want to endorse
     posts:
-      one: Toot
-      other: Toots
+      one: Aha
+      other: Ahas
     posts_tab_heading: Toots
     posts_with_replies: Toots and replies
     reserved_username: The username is reserved
