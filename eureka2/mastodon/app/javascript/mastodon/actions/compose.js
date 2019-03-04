@@ -116,6 +116,8 @@ export function directCompose(account, routerHistory) {
   };
 };
 
+
+//Get the LOC ID from a URL.
 function processLocID(id) {
   var processed = id;
   if (id.indexOf("http") != -1) {

@@ -1,0 +1,53 @@
+{
+  "name": "react-h5-audio-player",
+  "version": "1.1.0",
+  "description": "A React audio player with UI. Mobile compatible.",
+  "main": "./lib/index.js",
+  "scripts": {
+    "build": "babel src --out-dir lib",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook": "start-storybook -p 9000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/lhz516/react-h5-audio-player.git"
+  },
+  "keywords": [
+    "react",
+    "component",
+    "music",
+    "audio",
+    "player",
+    "mobile"
+  ],
+  "author": "Hanz Luo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lhz516/react-h5-audio-player/issues"
+  },
+  "homepage": "https://github.com/lhz516/react-h5-audio-player#readme",
+  "peerDependencies": {
+    "react": "^15.5.0 || ^16.0.0",
+    "react-dom": "^15.5.0 || ^16.0.0",
+    "prop-types": "^15.5.0 || ^16.0.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "@storybook/addon-actions": "^4.0.2",
+    "@storybook/addon-info": "^4.0.2",
+    "@storybook/addon-options": "^4.0.2",
+    "@storybook/react": "^4.0.2",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.4",
+    "eslint": "^5.8.0",
+    "eslint-plugin-react": "^7.11.1",
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0"
+  }
+}

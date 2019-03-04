@@ -789,6 +789,10 @@
   background-color:lighten($ui-base-color, 25%)
 }
 
+.loc__block a {
+  color: lighten($light-text-color, 50%);
+}
+
 .media-gallery-loc {
  width:95%;
   margin-bottom:25px;

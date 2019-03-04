@@ -17,6 +17,7 @@ import { MediaGallery, Video, LocMediaGallery } from '../features/ui/util/async-
 import { HotKeys } from 'react-hotkeys';
 import classNames from 'classnames';
 import axios from 'axios';
+  
 
 // We use the component (and not the container) since we do not want
 // to use the progress bar to show download progress
@@ -498,7 +499,7 @@ class Status extends ImmutablePureComponent {
 
             {locMedia}
 
-            <div className='loc__title'>{this.state.locData.item ? this.state.locData.item.title:'no title'}</div>
+            <div className='loc__title'><a target="_blank" href={this.state.locData.item ? this.state.locData.item.id:'null'}>{this.state.locData.item ? this.state.locData.item.title:'no title'}</a></div>
             <div className='loc__contributer'>{this.state.locData.item ? this.state.locData.item.contributor_names[0]:'unknown'}</div>
             <div className='loc__date'>{this.state.locData.item ? this.state.locData.item.created_published_date:'unknown'}</div>
 
