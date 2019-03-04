@@ -772,6 +772,36 @@
   vertical-align: middle;
 }
 
+.loc__title {
+  color: lighten($light-text-color, 25%);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.loc__block {
+  color: $light-text-color;
+  border-bottom: 1px solid lighten($ui-base-color, 8%);
+  padding: 5px;
+  margin-bottom:25px;
+  background-color:lighten($ui-base-color, 25%)
+}
+
+.media-gallery-loc {
+ width:95%;
+  margin-bottom:25px;
+
+}
+
+.media-gallery-loc__item { 
+
+  border: 5px solid lighten($ui-base-color, 70%);
+  padding-bottom:5px;
+  -webkit-box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.75);
+  box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.75);
+
+}
+
 .status__wrapper--filtered {
   color: $dark-text-color;
   border: 0;

@@ -494,9 +494,15 @@ class Status extends ImmutablePureComponent {
               </a>
             </div>
 
+            <div className='loc__block' id={'loc' + status.get('loc_id')} >
+
             {locMedia}
 
-            <div id={'loc' + status.get('loc_id')}  className='loc__stuff'>{this.state.locData.item ? this.state.locData.item.title:'no title'}</div>
+            <div className='loc__title'>{this.state.locData.item ? this.state.locData.item.title:'no title'}</div>
+            <div className='loc__contributer'>{this.state.locData.item ? this.state.locData.item.contributor_names[0]:'unknown'}</div>
+            <div className='loc__date'>{this.state.locData.item ? this.state.locData.item.created_published_date:'unknown'}</div>
+
+            </div>
 
             <StatusContent status={status} onClick={this.handleClick} expanded={!status.get('hidden')} onExpandedToggle={this.handleExpandedToggle} collapsable />
 
