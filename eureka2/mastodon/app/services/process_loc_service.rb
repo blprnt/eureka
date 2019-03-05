@@ -31,10 +31,10 @@ class ProcessLocService < BaseService
         slug = slug + '?'
      end
 
-     case is_number? (beforeperiod)
-     when true
-       @url = 'https://www.loc.gov/item/' + slug + 'fo=json' 
+     case status.loc_id.include? ('.')
      when false
+       @url = 'https://www.loc.gov/item/' + slug + 'fo=json' 
+     when true
        @url = 'https://www.loc.gov/resource/' + slug + 'fo=json' 
      else 
        @url='unknown'
