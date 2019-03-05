@@ -95,6 +95,7 @@ class Status extends ImmutablePureComponent {
   //*** This is where I'm dynamically loading the LOC JSON data. Ideally this happens server side...
 
   componentDidMount () {
+    
     console.log("STATS");
     var id = this.props.status.get('loc_id');
 
@@ -102,9 +103,18 @@ class Status extends ImmutablePureComponent {
     var jgood = jout.split("=>").join("=");
 
     if (jgood.length > 10) {
-      var json = JSON.parse(jgood);
+      console.log("PRE JSON");
+      var chk = false;
+      try {
+        var json = JSON.parse(jgood);
+        chk = true;
+      } catch (error) {
 
-      if (json.item.image_url.length > 0) {
+      }
+       console.log(json);
+       console.log(chk);
+
+      if (chk && json.item.image_url.length > 0) {
         var testImages = Immutable.Map(
             {id:'4', 
             type:'image', 
@@ -116,9 +126,11 @@ class Status extends ImmutablePureComponent {
 
         var mapped = Immutable.List([testImages]);
         this.state.locMedia = mapped;
+        this.state.locData = json;
       }
-      this.state.locData = json;
+      
       this.setState({ state:this.state });
+
    }
     
     /*

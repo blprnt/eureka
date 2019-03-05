@@ -3,10 +3,47 @@
 class ProcessLocService < BaseService
   attr_reader :url, :status
 
+  def is_number? string
+    true if Float(string) rescue false
+  end
+
   def call(status)
+
    @status = status
-   @url = 'https://www.loc.gov/item/' + status.loc_id + '?fo=json' 
+   @url = "null"
+
+   puts "!----------********************************************--------!"
+   puts "!----------********************************************--------!"
+   puts "!----------********************************************--------!"
+   puts "!----------********************************************--------!"
+
+   
+   beforeperiod = status.loc_id.split('.').first.split('/').first
+   puts beforeperiod
+   puts is_number? (beforeperiod)
+
+   
+   test = true
+   
+   slug = status.loc_id
+
+   if slug['?']
+      slug = slug + '&'
+   else
+      slug = slug + '?'
+   end
+
+   case is_number? (beforeperiod)
+   when true
+     @url = 'https://www.loc.gov/item/' + slug + 'fo=json' 
+   when false
+     @url = 'https://www.loc.gov/resource/' + slug + 'fo=json' 
+   else 
+     @url='unknown'
+   end
+
    fetch!
+  
   end
 
   def fetch!

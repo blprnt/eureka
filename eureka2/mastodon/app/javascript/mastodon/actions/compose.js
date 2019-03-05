@@ -122,9 +122,14 @@ function processLocID(id) {
   var processed = id;
   if (id.indexOf("http") != -1) {
     //https://www.loc.gov/item/2014706863/
-    processed = id.split('item/')[1].replace("/", "");
+    //https://www.loc.gov/resource/mss42549.mss42549-011_00560_00608/?sp=2
+    //https://www.loc.gov/resource/ggbain.31449
+    if (id.indexOf("/item/") != -1) {
+      processed = id.split('item/')[1];//.replace("/", "");
+    } else if (id.indexOf("/resource/") != -1) {
+      processed = id.split('resource/')[1];//.replace("/", "");
+    }
   } 
-  console.log("PROCESSED" + processed);
   return processed;
 }
 
