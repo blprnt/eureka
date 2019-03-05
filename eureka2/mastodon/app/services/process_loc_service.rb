@@ -10,39 +10,38 @@ class ProcessLocService < BaseService
   def call(status)
 
    @status = status
-   @url = "null"
 
-   puts "!----------********************************************--------!"
-   puts "!----------********************************************--------!"
-   puts "!----------********************************************--------!"
-   puts "!----------********************************************--------!"
+   if status.loc_id.length > 4
+     @url = "null"
 
-   
-   beforeperiod = status.loc_id.split('.').first.split('/').first
-   puts beforeperiod
-   puts is_number? (beforeperiod)
+     puts "!----------********************************************--------!"
+     puts "!----------********************************************--------!"
+     puts "!----------********************************************--------!"
+     puts "!----------********************************************--------!"
 
-   
-   test = true
-   
-   slug = status.loc_id
+     puts status.loc_id
 
-   if slug['?']
-      slug = slug + '&'
-   else
-      slug = slug + '?'
-   end
+     beforeperiod = status.loc_id.split('.').first.split('/').first
+     
+     slug = status.loc_id
 
-   case is_number? (beforeperiod)
-   when true
-     @url = 'https://www.loc.gov/item/' + slug + 'fo=json' 
-   when false
-     @url = 'https://www.loc.gov/resource/' + slug + 'fo=json' 
-   else 
-     @url='unknown'
-   end
+     if slug['?']
+        slug = slug + '&'
+     else
+        slug = slug + '?'
+     end
 
-   fetch!
+     case is_number? (beforeperiod)
+     when true
+       @url = 'https://www.loc.gov/item/' + slug + 'fo=json' 
+     when false
+       @url = 'https://www.loc.gov/resource/' + slug + 'fo=json' 
+     else 
+       @url='unknown'
+     end
+
+     fetch!
+  end
   
   end
 

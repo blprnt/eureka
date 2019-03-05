@@ -119,7 +119,7 @@ export function directCompose(account, routerHistory) {
 
 //Get the LOC ID from a URL.
 function processLocID(id) {
-  var processed = id;
+  var processed = null;
   if (id.indexOf("http") != -1) {
     //https://www.loc.gov/item/2014706863/
     //https://www.loc.gov/resource/mss42549.mss42549-011_00560_00608/?sp=2
