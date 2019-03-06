@@ -793,6 +793,18 @@
   color: lighten($light-text-color, 50%);
 }
 
+.loc__details {
+  color: lighten($light-text-color, 75%);
+  margin-top:5px;
+}
+
+.loc__notes {
+  color: lighten($light-text-color, 75%);
+  font-style: oblique;
+  margin-top:5px;
+}
+
+
 .media-gallery-loc {
  width:95%;
   margin-bottom:25px;

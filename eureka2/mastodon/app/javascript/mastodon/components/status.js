@@ -1,5 +1,4 @@
 import React from 'react';
-import Immutable from 'immutable';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import PropTypes from 'prop-types';
 import Avatar from './avatar';
@@ -16,6 +15,7 @@ import ImmutablePureComponent from 'react-immutable-pure-component';
 import { MediaGallery, Video, LocMediaGallery } from '../features/ui/util/async-components';
 import { HotKeys } from 'react-hotkeys';
 import classNames from 'classnames';
+import Immutable from 'immutable';
 import axios from 'axios';
   
 
@@ -96,14 +96,12 @@ class Status extends ImmutablePureComponent {
 
   componentDidMount () {
     
-    console.log("STATS");
     var id = this.props.status.get('loc_id');
 
     var jout = this.props.status.get('loc_json');
     var jgood = jout.split("=>").join("=");
 
     if (jgood.length > 10) {
-      console.log("PRE JSON");
       var chk = false;
       try {
         var json = JSON.parse(jgood);
@@ -111,8 +109,6 @@ class Status extends ImmutablePureComponent {
       } catch (error) {
 
       }
-       console.log(json);
-       console.log(chk);
 
       if (chk && json.item.image_url.length > 0) {
         var testImages = Immutable.Map(
@@ -132,38 +128,6 @@ class Status extends ImmutablePureComponent {
       this.setState({ state:this.state });
 
    }
-    
-    /*
-    
-    if (id && id.length > 0) {
-    axios.get('https://www.loc.gov/item/' + id + '?fo=json')
-      .then(res => {
-        const locData = res.data;
-        this.state.locData = locData;
-
-        console.log(locData.item.image_url[locData.item.image_url.length - 1].replace("http", "https"));
-        console.log(locData.item.image_url[0].replace("http", "https"))
-
-        var testImages = Immutable.Map(
-        {id:'4', 
-        type:'image', 
-        meta: [{}],
-        url: "https:" + locData.item.image_url[locData.item.image_url.length - 1],
-        preview_url: "https:" + locData.item.image_url[0]
-        }
-        );
-
-
-        var mapped = Immutable.List([testImages]);
-        this.state.locMedia = mapped;
-
-        this.setState({ state:this.state });
-        
-      });
-
-    }
-    */
-
     this.didShowCard = !this.props.muted && !this.props.hidden && this.props.status && this.props.status.get('card');
   }
 
@@ -292,6 +256,7 @@ class Status extends ImmutablePureComponent {
   }
 
   render () {
+
     let media = null;
     let locMedia = null;
     let statusAvatar, prepend, rebloggedByText;

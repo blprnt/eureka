@@ -13,6 +13,11 @@ import ImmutablePureComponent from 'react-immutable-pure-component';
 import Video from '../../video';
 import scheduleIdleTask from '../../ui/util/schedule_idle_task';
 import classNames from 'classnames';
+import Immutable from 'immutable';
+import axios from 'axios';
+import {LocMediaGallery } from '../../../features/ui/util/async-components';
+
+import Bundle from '../../../features/ui/components/bundle';
 
 export default class DetailedStatus extends ImmutablePureComponent {
 
@@ -33,6 +38,8 @@ export default class DetailedStatus extends ImmutablePureComponent {
 
   state = {
     height: null,
+    locData: {},
+    locMedia: ImmutablePropTypes.list
   };
 
   handleAccountClick = (e) => {
@@ -67,8 +74,48 @@ export default class DetailedStatus extends ImmutablePureComponent {
     this._measureHeight();
   }
 
+  renderLoadingMediaGallery () {
+    return <div className='media_gallery' style={{ height: '110px' }} />;
+  }
+
   componentDidUpdate (prevProps, prevState) {
     this._measureHeight(prevState.height !== this.state.height);
+  }
+
+  componentDidMount () {
+    
+    var id = this.props.status.get('loc_id');
+
+    var jout = this.props.status.get('loc_json');
+    var jgood = jout.split("=>").join("=");
+
+    if (jgood.length > 10) {
+      var chk = false;
+      try {
+        var json = JSON.parse(jgood);
+        chk = true;
+      } catch (error) {
+
+      }
+
+      if (chk && json.item.image_url.length > 0) {
+        var testImages = Immutable.Map(
+            {id:'4', 
+            type:'image', 
+            meta: [{}],
+            url: "https:" + json.item.image_url[json.item.image_url.length - 1],
+            preview_url: "https:" + json.item.image_url[json.item.image_url.length - 1]
+            }
+            );
+
+        var mapped = Immutable.List([testImages]);
+        this.state.locMedia = mapped;
+        this.state.locData = json;
+      }
+      
+      this.setState({ state:this.state });
+
+   }
   }
 
   handleModalLink = e => {
@@ -86,6 +133,7 @@ export default class DetailedStatus extends ImmutablePureComponent {
   }
 
   render () {
+    let locMedia = null;
     const status = (this.props.status && this.props.status.get('reblog')) ? this.props.status.get('reblog') : this.props.status;
     const outerStyle = { boxSizing: 'border-box' };
     const { compact } = this.props;
@@ -99,10 +147,72 @@ export default class DetailedStatus extends ImmutablePureComponent {
     let reblogLink = '';
     let reblogIcon = 'retweet';
     let favouriteLink = '';
+    
 
     if (this.props.measureHeight) {
       outerStyle.height = `${this.state.height}px`;
     }
+
+    //******** START LOC MEDIA COMPONENT
+
+    if (this.state.locMedia.size > 0) {
+      if (this.props.muted || this.state.locMedia.some(item => item.get('type') === 'unknown')) {
+        locMedia = (
+          <AttachmentList
+            compact
+            media={this.state.locMedia}
+          />
+        );
+      } else if (status.getIn(['media_attachments', 0, 'type']) === 'video') {
+        const video = status.getIn(['media_attachments', 0]);
+
+        locMedia = (
+          <Bundle fetchComponent={Video} loading={this.renderLoadingVideoPlayer} >
+            {Component => (
+              <Component
+                preview={video.get('preview_url')}
+                src={video.get('url')}
+                alt={video.get('description')}
+                width={this.props.cachedMediaWidth}
+                height={110}
+                inline
+                sensitive={status.get('sensitive')}
+                onOpenVideo={this.handleOpenVideo}
+                cacheWidth={this.props.cacheMediaWidth}
+              />
+            )}
+          </Bundle>
+        );
+      } else {
+        console.log(locMedia)
+        locMedia = (
+          <Bundle fetchComponent={LocMediaGallery} loading={this.renderLoadingMediaGallery}>
+            {Component => (
+              <Component
+                media={this.state.locMedia}
+                sensitive={status.get('sensitive')}
+                height={110}
+                onOpenMedia={this.props.onOpenMedia}
+                cacheWidth={this.props.cacheMediaWidth}
+                defaultWidth={this.props.cachedMediaWidth}
+              />
+            )}
+          </Bundle>
+        );
+      }
+    } else if (status.get('spoiler_text').length === 0 && status.get('card')) {
+      locMedia = (
+        <Card
+          onOpenMedia={this.props.onOpenMedia}
+          card={status.get('card')}
+          compact
+          cacheWidth={this.props.cacheMediaWidth}
+          defaultWidth={this.props.cachedMediaWidth}
+        />
+      );
+    }
+
+    //******** END LOC MEDIA COMPONENT
 
     if (status.get('media_attachments').size > 0) {
       if (status.get('media_attachments').some(item => item.get('type') === 'unknown')) {
@@ -197,7 +307,35 @@ export default class DetailedStatus extends ImmutablePureComponent {
             <DisplayName account={status.get('account')} localDomain={this.props.domain} />
           </a>
 
+          {this.state.locData.item &&
+            <div className='loc__block' id={'loc' + status.get('loc_id')} >
+
+            {locMedia}
+          
+              
+              <div className='loc__title'><a target="_blank" href={this.state.locData.item ? this.state.locData.item.id:'null'}>{this.state.locData.item ? this.state.locData.item.title:'no title'}</a></div>
+            
+              <div className='loc__contributer'>{this.state.locData.item ? this.state.locData.item.contributor_names[0]:'unknown'}</div>
+
+              <div className='loc__date'>{this.state.locData.item ? this.state.locData.item.created_published_date:'unknown'}</div>
+              
+              <div className = 'loc__details'>
+              
+              {this.state.locData.item.description &&
+              <div className='loc__desc'>{this.state.locData.item ? this.state.locData.item.description.join('\r\n'):''}</div>
+              }
+
+              {this.state.locData.item.notes &&
+               <div className='loc__notes'>{this.state.locData.item ? this.state.locData.item.notes.join('\r\n'):''}</div>
+              }
+
+              </div>
+            </div>
+            }
+
           <StatusContent status={status} expanded={!status.get('hidden')} onExpandedToggle={this.handleExpandedToggle} />
+          
+          
 
           {media}
 
