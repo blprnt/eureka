@@ -31,7 +31,10 @@ class ProcessLocService < BaseService
         slug = slug + '?'
      end
 
-     case status.loc_id.include? ('.')
+    hasDot = status.loc_id.include? ('.');
+    hasIhas = status.loc_id.include? ('ihas');
+
+     case ( hasDot && !hasIhas)
      when false
        @url = 'https://www.loc.gov/item/' + slug + 'fo=json' 
      when true
