@@ -47,3 +47,7 @@
 2019-03-03 10:50:31.485 EST [84632] STATEMENT:  CREATE DATABASE "mastodon_development" ENCODING = 'unicode'
 2019-03-03 10:50:31.496 EST [84633] ERROR:  database "mastodon_test" already exists
 2019-03-03 10:50:31.496 EST [84633] STATEMENT:  CREATE DATABASE "mastodon_test" ENCODING = 'unicode'
+2019-03-07 12:00:34.682 EST [8788] LOG:  received smart shutdown request
+2019-03-07 12:00:34.687 EST [8788] LOG:  background worker "logical replication launcher" (PID 8795) exited with exit code 1
+2019-03-07 12:00:34.687 EST [8790] LOG:  shutting down
+2019-03-07 12:00:34.723 EST [8788] LOG:  database system is shut down
