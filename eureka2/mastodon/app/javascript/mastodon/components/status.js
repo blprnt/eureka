@@ -487,7 +487,7 @@ class Status extends ImmutablePureComponent {
               }
 
               {this.state.locData.item.created_published_date &&
-              <div className='loc__date'>{this.state.locData.item.item.created_published_date ? this.state.locData.item.created_published_date:'unknown'}</div>
+              <div className='loc__date'>{this.state.locData.item.created_published_date ? this.state.locData.item.created_published_date:'unknown'}</div>
               }
 
             </div>
