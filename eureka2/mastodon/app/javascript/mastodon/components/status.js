@@ -478,13 +478,17 @@ class Status extends ImmutablePureComponent {
 
             {locMedia}
           
-              
-              <div className='loc__title'><a target="_blank" href={this.state.locData.item ? this.state.locData.item.id:'null'}>{this.state.locData.item ? this.state.locData.item.title:'no title'}</a></div>
-            
-              <div className='loc__contributer'>{this.state.locData.item.contributor_names ? this.state.locData.item.contributor_names[0]:'unknown'}</div>
+              {this.state.locData.item.id &&
+              <div className='loc__title'><a target="_blank" href={this.state.locData.item.id ? this.state.locData.item.id:'null'}>{this.state.locData.item ? this.state.locData.item.title:'no title'}</a></div>
+              }
 
+              {this.state.locData.item.contributor_names &&
+              <div className='loc__contributer'>{this.state.locData.item.contributor_names ? this.state.locData.item.contributor_names[0]:'unknown'}</div>
+              }
+
+              {this.state.locData.item.created_published_date &&
               <div className='loc__date'>{this.state.locData.item.item.created_published_date ? this.state.locData.item.created_published_date:'unknown'}</div>
-          
+              }
 
             </div>
             }
